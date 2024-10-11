@@ -2,27 +2,16 @@
   <footer>
     <div class="copyright">
       <n-text class="description" v-html="packageJson.description" />
-      <n-text
-        class="author"
-        :depth="3"
-        v-html="packageJson.author"
-        @click="jumpLink(packageJson.github)"
-      />
+      <n-text class="author" :depth="3" v-html="packageJson.author" @click="jumpLink(packageJson.github)" />
     </div>
-    <n-text
-      v-if="icp"
-      :depth="3"
-      class="icp"
-      v-html="icp"
-      @click="jumpLink('https://beian.miit.gov.cn/')"
-    />
+    <n-text v-if="icp" :depth="3" class="icp" v-html="icp" @click="jumpLink(packageJson.github)" />
   </footer>
 </template>
 
 <script setup>
 import packageJson from "@/../package.json";
 
-const icp = ref(import.meta.env.VITE_ICP ? import.meta.env.VITE_ICP : null);
+const icp = ref('人生足迹 · 博客平台');
 
 // 链接跳转
 const jumpLink = (url) => {
@@ -40,26 +29,32 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   .copyright {
     margin-bottom: 4px;
+
     .description {
       &::after {
-        content: "@ Copyright By";
+        content: "Copyright © 2024";
         margin: 0 6px;
       }
     }
   }
+
   .author {
     cursor: pointer;
     transition: all 0.3s;
+
     &:hover {
       color: var(--n-code-text-color);
     }
   }
+
   .icp {
     font-size: 13px;
     cursor: pointer;
     transition: all 0.3s;
+
     &:hover {
       color: var(--n-code-text-color);
     }
