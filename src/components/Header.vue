@@ -37,20 +37,13 @@
           </n-popover>
           <n-popover>
             <template #trigger>
-              <n-button
-                secondary
-                strong
-                round
-                @click="
-                  store.setSiteTheme(
-                    store.siteTheme === 'light' ? 'dark' : 'light'
-                  )
-                "
-              >
+              <n-button secondary strong round @click="
+                store.setSiteTheme(
+                  store.siteTheme === 'light' ? 'dark' : 'light'
+                )
+                ">
                 <template #icon>
-                  <n-icon
-                    :component="store.siteTheme === 'light' ? Moon : SunOne"
-                  />
+                  <n-icon :component="store.siteTheme === 'light' ? Moon : SunOne" />
                 </template>
               </n-button>
             </template>
@@ -69,13 +62,8 @@
         </n-space>
       </div>
       <div class="mobile">
-        <n-dropdown
-          :options="menuOptions"
-          size="large"
-          trigger="click"
-          placement="bottom-end"
-          @select="menuOptionsSelect"
-        >
+        <n-dropdown :options="menuOptions" size="large" trigger="click" placement="bottom-end"
+          @select="menuOptionsSelect">
           <n-button secondary strong round>
             <template #icon>
               <n-icon :component="HamburgerButton" />
@@ -129,10 +117,10 @@ const timeRender = () => {
           default: () =>
             store.timeData
               ? store.timeData.lunar.GanZhiYear +
-                "年 " +
-                store.timeData.lunar.text +
-                " " +
-                store.timeData.time.weekday
+              "年 " +
+              store.timeData.lunar.text +
+              " " +
+              store.timeData.time.weekday
               : "日期获取失败",
         }
       ),
@@ -228,6 +216,7 @@ onBeforeUnmount(() => {
   top: 0;
   background-color: transparent;
   transition: all 0.3s;
+
   section {
     width: 100%;
     max-width: 1800px;
@@ -236,50 +225,61 @@ onBeforeUnmount(() => {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: space-between;
+
     .logo {
       display: flex;
       flex-direction: row;
       align-items: center;
       cursor: pointer;
+
       img {
         width: 50px;
         height: 50px;
         margin-right: 16px;
         transition: all 0.3s;
       }
+
       .name {
         display: flex;
         flex-direction: column;
+
         span {
           &:nth-of-type(1) {
             font-size: 20px;
             font-weight: bold;
             transition: all 0.3s;
           }
+
           &:nth-of-type(2) {
             font-size: 12px;
           }
         }
       }
     }
+
     .current-time {
       display: flex;
       flex-direction: column;
       align-items: center;
+
       .date {
         font-size: 12px;
       }
     }
+
     .mobile {
       display: none;
     }
+
     @media (max-width: 768px) {
       display: flex;
+
       .logo {
         img {
           width: 40px;
           height: 40px;
         }
+
         .name {
           span {
             &:nth-of-type(1) {
@@ -288,10 +288,12 @@ onBeforeUnmount(() => {
           }
         }
       }
+
       .current-time,
       .controls {
         display: none;
       }
+
       .mobile {
         display: block;
       }

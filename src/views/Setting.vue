@@ -7,12 +7,7 @@
         <div class="name">
           <n-text class="text">明暗模式</n-text>
         </div>
-        <n-select
-          class="set"
-          v-model:value="siteTheme"
-          :options="themeOptions"
-          @update:value="siteThemeAuto = false"
-        />
+        <n-select class="set" v-model:value="siteTheme" :options="themeOptions" @update:value="siteThemeAuto = false" />
       </div>
     </n-card>
     <n-card class="set-item">
@@ -21,11 +16,7 @@
           <n-text class="text">明暗模式跟随系统</n-text>
           <n-text class="tip" :depth="3"> 明暗模式是否跟随系统当前模式 </n-text>
         </div>
-        <n-switch
-          v-model:value="siteThemeAuto"
-          :round="false"
-          @update:value="themeAutoOpen"
-        />
+        <n-switch v-model:value="siteThemeAuto" :round="false" @update:value="themeAutoOpen" />
       </div>
     </n-card>
     <n-card class="set-item">
@@ -34,11 +25,7 @@
           <n-text class="text">链接跳转方式</n-text>
           <n-text class="tip" :depth="3"> 选择榜单列表内容的跳转方式 </n-text>
         </div>
-        <n-select
-          class="set"
-          v-model:value="linkOpenType"
-          :options="linkOptions"
-        />
+        <n-select class="set" v-model:value="linkOpenType" :options="linkOptions" />
       </div>
     </n-card>
     <n-card class="set-item">
@@ -54,31 +41,21 @@
       <div class="top" style="flex-direction: column; align-items: flex-start">
         <div class="name">
           <n-text class="text">列表文本大小</n-text>
-          <n-card
-            class="tip"
-            :style="{
-              backgroundColor: 'var(--n-border-color)',
-              margin: '12px 0',
-            }"
-          >
+          <n-card class="tip" :style="{
+            backgroundColor: 'var(--n-border-color)',
+            margin: '12px 0',
+          }">
             <n-text :style="{ fontSize: listFontSize + 'px' }">
               我是将要显示的文字的大小
             </n-text>
           </n-card>
         </div>
 
-        <n-slider
-          v-model:value="listFontSize"
-          :tooltip="false"
-          :max="20"
-          :min="14"
-          :step="0.01"
-          :marks="{
-            14: '小一点',
-            16: '默认',
-            20: '最大',
-          }"
-        />
+        <n-slider v-model:value="listFontSize" :tooltip="false" :max="20" :min="14" :step="0.01" :marks="{
+          14: '小一点',
+          16: '默认',
+          20: '最大',
+        }" />
       </div>
     </n-card>
     <n-card class="set-item">
@@ -96,29 +73,15 @@
           确认将排序恢复到默认状态？
         </n-popconfirm>
       </div>
-      <draggable
-        :list="newsArr"
-        :animation="200"
-        class="mews-group"
-        item-key="order"
-        @end="saveSoreData()"
-      >
+      <draggable :list="newsArr" :animation="200" class="mews-group" item-key="order" @end="saveSoreData()">
         <template #item="{ element }">
-          <n-card
-            class="item"
-            embedded
-            :content-style="{ display: 'flex', alignItems: 'center' }"
-          >
+          <n-card class="item" embedded :content-style="{ display: 'flex', alignItems: 'center' }">
             <div class="desc" :style="{ opacity: element.show ? null : 0.6 }">
-              <img class="logo" :src="`/logo/${element.name}.png`" alt="logo" />
+              <img class="logo" :src="`/static-hot/logo/${element.name}.png`" alt="logo" />
               <n-text class="news-name" v-html="element.label" />
             </div>
-            <n-switch
-              class="switch"
-              :round="false"
-              v-model:value="element.show"
-              @update:value="saveSoreData(element.label, element.show)"
-            />
+            <n-switch class="switch" :round="false" v-model:value="element.show"
+              @update:value="saveSoreData(element.label, element.show)" />
           </n-card>
         </template>
       </draggable>
@@ -150,6 +113,7 @@ import { useOsTheme } from "naive-ui";
 import draggable from "vuedraggable";
 
 const store = mainStore();
+
 const osThemeRef = useOsTheme();
 const {
   siteTheme,
